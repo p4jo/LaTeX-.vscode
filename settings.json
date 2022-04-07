@@ -1,0 +1,269 @@
+{
+    "files.autoSave": "afterDelay",
+    "latex-workshop.latex.search.rootFiles.exclude": [
+        "tex/**"
+    ],
+    "latex-workshop.latex.search.rootFiles.include": [
+        "*.tex",
+    ],
+    // "latex-workshop.latex.autoBuild.interval": 45000, //wird wohl nicht nach Ende gezählt
+    "files.exclude": {
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.bcf": true,
+        "**/*.blg": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        "**/*.nav": true,
+        "**/*.snm": true,
+        "**/*.out": true,
+        "**/*.run.xml": true,
+        "**/*.synctex.gz": true,
+        "**/*.synctex(busy)": true,
+        // "**/*.tex.bak": true,
+        "**/*.toc": true,
+        // "**/*_generated.tex": false,
+        "*.log": true,
+        // "**/*.log": true,
+        "**/*.7z": true,
+        "**/*.zip": true,
+        // "**/*.pdf": true
+    },
+    "[latex]": {
+        "files.encoding": "utf8",
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix"
+    },
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.recipes": [
+
+
+        {
+            "name": "Auto-Ref ➞ lualatex",
+            "tools": [
+                "saveLog",
+                "texrefautomate",
+                "lualatex",
+                "saveLog",
+            ]
+        },
+        {
+            "name": "lualatex",
+            "tools": [
+                "lualatex"
+            ]
+        },
+        {
+            "name": "lualatex ➞ biber ➞ lualatex × 2",
+            "tools": [
+                "saveLog",
+                "texrefautomate",
+                "lualatex",
+                "biber",
+                "lualatex",
+                "lualatex",
+                "saveLog",
+            ]
+        },
+        {
+            "name": "biber",
+            "tools": [
+                "biber"
+            ]
+        },
+        // {
+        //     "name": "TeX-Ref-Automate",
+        //     "tools": [
+        //         "texrefautomateAll"
+        //     ]
+        // },
+        
+        // {
+        //     "name": "latexmk",
+        //     "tools": [
+        //         "latexmk"
+        //     ]
+        // },
+        // {
+        //     "name": "pdflatex",
+        //     "tools": [
+        //         "pdflatex"
+        //     ]
+        // },
+        // {
+        //     "name": "latexmk (latexmkrc)",
+        //     "tools": [
+        //         "latexmk_rconly"
+        //     ]
+        // },
+        // {
+        //     "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+        //     "tools": [
+        //         "pdflatex",
+        //         "bibtex",
+        //         "pdflatex",
+        //         "pdflatex"
+        //     ]
+        // },
+        // {
+        //     "name": "Compile Rnw files",
+        //     "tools": [
+        //         "rnw2tex",
+        //         "latexmk"
+        //     ]
+        // },
+        // {
+        //     "name": "Compile Jnw files",
+        //     "tools": [
+        //         "jnw2tex",
+        //         "latexmk"
+        //     ]
+        // }
+    ],
+    "latex-workshop.intellisense.unimathsymbols.enabled": true,
+    "latex-workshop.latex.tools": [
+        {
+            "name": "saveLog",
+            "command": "powershell .\\Automate\\saveLog.ps1",
+            "args": [
+                "-p %DOC%"
+            ]
+        },
+        {
+            "name": "texrefautomate",
+            "command": "powershell .\\Automate\\automate.ps1",
+            "args": [
+                "-all",
+                "-p %DOC%",
+                // "-author <Author here>"
+            ]
+        },
+        {
+            "name": "texrefautomateAll",
+            "command": "powershell .\\Automate\\automate.ps1",
+            "args": [
+                "-all",
+                "-author \"Johannes Heißler\""
+            ]
+        },
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                // "-halt-on-error",
+                "-file-line-error",
+                "-recorder",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "rnw2tex",
+            "command": "Rscript",
+            "args": [
+                "-e",
+                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2tex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2texmintex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.view.pdf.trim": 2,
+    "latex-workshop.message.latexlog.exclude": [
+        "I've expected \\\\MT_cramped_internal:Nn to have",
+        "You have requested package",
+        "Using \\\\overbracket and \\\\underbracket from",
+        "I'm going to overwrite the following commands",
+        "Unable to apply patch",
+    ],
+    // "latex-workshop.message.error.show": false,
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "git.confirmSync": false,
+    "git.postCommitCommand": "sync",
+    "git.autoStash": true,
+    "editor.fontFamily": "Myriad Pro",
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
+    "latex-workshop.chktex.enabled": true,
+}
