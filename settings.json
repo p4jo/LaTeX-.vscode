@@ -36,15 +36,11 @@
     },
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.recipes": [
-
-
         {
             "name": "Auto-Ref ➞ lualatex",
             "tools": [
-                "saveLog",
                 "texrefautomate",
-                "lualatex",
-                "saveLog",
+                "lualatex"
             ]
         },
         {
@@ -56,13 +52,12 @@
         {
             "name": "lualatex ➞ biber ➞ lualatex × 2",
             "tools": [
-                "saveLog",
                 "texrefautomate",
                 "lualatex",
                 "biber",
+                "texrefautomate",
                 "lualatex",
                 "lualatex",
-                "saveLog",
             ]
         },
         {
@@ -71,79 +66,30 @@
                 "biber"
             ]
         },
-        // {
-        //     "name": "TeX-Ref-Automate",
-        //     "tools": [
-        //         "texrefautomateAll"
-        //     ]
-        // },
-        
-        // {
-        //     "name": "latexmk",
-        //     "tools": [
-        //         "latexmk"
-        //     ]
-        // },
-        // {
-        //     "name": "pdflatex",
-        //     "tools": [
-        //         "pdflatex"
-        //     ]
-        // },
-        // {
-        //     "name": "latexmk (latexmkrc)",
-        //     "tools": [
-        //         "latexmk_rconly"
-        //     ]
-        // },
-        // {
-        //     "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
-        //     "tools": [
-        //         "pdflatex",
-        //         "bibtex",
-        //         "pdflatex",
-        //         "pdflatex"
-        //     ]
-        // },
-        // {
-        //     "name": "Compile Rnw files",
-        //     "tools": [
-        //         "rnw2tex",
-        //         "latexmk"
-        //     ]
-        // },
-        // {
-        //     "name": "Compile Jnw files",
-        //     "tools": [
-        //         "jnw2tex",
-        //         "latexmk"
-        //     ]
-        // }
+        {
+            "name": "TeX-Ref-Automate",
+            "tools": [
+                "texrefautomateAll"
+            ]
+        },
     ],
     "latex-workshop.intellisense.unimathsymbols.enabled": true,
     "latex-workshop.latex.tools": [
-        {
-            "name": "saveLog",
-            "command": "powershell .\\Automate\\saveLog.ps1",
-            "args": [
-                "-p %DOC%"
-            ]
-        },
         {
             "name": "texrefautomate",
             "command": "powershell .\\Automate\\automate.ps1",
             "args": [
                 "-all",
                 "-p %DOC%",
-                // "-author <Author here>"
+                "-s"
+                // "-author \"<Author here>\""
             ]
         },
         {
             "name": "texrefautomateAll",
             "command": "powershell .\\Automate\\automate.ps1",
             "args": [
-                "-all",
-                "-author \"Johannes Heißler\""
+                // "-author \"<Author here>\""
             ]
         },
         {
