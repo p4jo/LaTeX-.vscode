@@ -207,9 +207,14 @@
     "git.confirmSync": false,
     "git.postCommitCommand": "sync",
     "git.autoStash": true,
-    "editor.fontFamily": "Myriad Pro",
     "latex-workshop.message.warning.show": false,
     "latex-workshop.message.error.show": false,
     "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
     "latex-workshop.chktex.enabled": true,
+    
+    "editor.fontFamily": "Myriad Pro",
+    "editor.unicodeHighlight.allowedCharacters": {
+        "γ": true,
+        "α": true
+    },
 }
