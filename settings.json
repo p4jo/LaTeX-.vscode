@@ -101,6 +101,7 @@
                 // "-halt-on-error",
                 "-file-line-error",
                 "-recorder",
+                "--output-directory=%OUTDIR%",
                 "%DOC%"
             ],
             "env": {}
@@ -215,6 +216,8 @@
     "editor.fontFamily": "Myriad Pro",
     "editor.unicodeHighlight.allowedCharacters": {
         "γ": true,
-        "α": true
+        "α": true,
+        "ν": true
     },
+    "latex-workshop.latex.outDir": "%DIR%/_auxiliary",
 }
