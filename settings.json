@@ -5,6 +5,7 @@
     ],
     "latex-workshop.latex.search.rootFiles.include": [
         "*.tex",
+        "**/*main.tex"
     ],
     // "latex-workshop.latex.autoBuild.interval": 45000, //wird wohl nicht nach Ende gezählt
     "files.exclude": {
@@ -77,18 +78,24 @@
     "latex-workshop.latex.tools": [
         {
             "name": "texrefautomate",
-            "command": "powershell .\\Automate\\automate.ps1",
+            "command": "powershell",
             "args": [
+                "%WORKSPACE_FOLDER%\\Automate\\automate.ps1",
                 "-all",
                 "-p %DOC%",
-                "-s"
+                "-s",
+                "-b %WORKSPACE_FOLDER"
                 // "-author \"<Author here>\""
             ]
         },
         {
             "name": "texrefautomateAll",
-            "command": "powershell .\\Automate\\automate.ps1",
+            "command": "powershell",
             "args": [
+                "%WORKSPACE_FOLDER%\\Automate\\automate.ps1",
+                "-all",
+                "-s",
+                "-b %WORKSPACE_FOLDER"
                 // "-author \"<Author here>\""
             ]
         },
@@ -219,5 +226,5 @@
         "α": true,
         "ν": true
     },
-    "latex-workshop.latex.outDir": "%DIR%/_auxiliary",
+    "latex-workshop.latex.outDir": "%DIR%/out",
 }
