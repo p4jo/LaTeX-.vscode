@@ -1,11 +1,11 @@
 {
     "files.autoSave": "afterDelay",
     "latex-workshop.latex.search.rootFiles.exclude": [
-        "tex/**"
+        "tex/**",
+        "**/*_generated.tex",        
     ],
     "latex-workshop.latex.search.rootFiles.include": [
-        "*.tex",
-        "**/*main.tex"
+        "**/*.tex"
     ],
     // "latex-workshop.latex.autoBuild.interval": 45000, //wird wohl nicht nach Ende gezählt
     "files.exclude": {
@@ -84,7 +84,7 @@
                 "-all",
                 "-p %DOC%",
                 "-s",
-                "-b %WORKSPACE_FOLDER"
+                "-b %WORKSPACE_FOLDER%"
                 // "-author \"<Author here>\""
             ]
         },
@@ -95,7 +95,7 @@
                 "%WORKSPACE_FOLDER%\\Automate\\automate.ps1",
                 "-all",
                 "-s",
-                "-b %WORKSPACE_FOLDER"
+                "-b %WORKSPACE_FOLDER%"
                 // "-author \"<Author here>\""
             ]
         },
