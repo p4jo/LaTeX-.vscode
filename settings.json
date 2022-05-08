@@ -78,24 +78,24 @@
     "latex-workshop.latex.tools": [
         {
             "name": "texrefautomate",
-            "command": "powershell",
-            "args": [
-                "%WORKSPACE_FOLDER%\\Automate\\automate.ps1",
+            "command": "powershell ",
+            "args": [               
+                 "\"%WORKSPACE_FOLDER%/Automate/automate.ps1\"",
                 "-all",
-                "-p %DOC%",
                 "-s",
-                "-b %WORKSPACE_FOLDER%"
+                "-b \"%WORKSPACE_FOLDER\"",
                 // "-author \"<Author here>\""
+                "-p \"%DOC%\"",
             ]
         },
         {
             "name": "texrefautomateAll",
             "command": "powershell",
             "args": [
-                "%WORKSPACE_FOLDER%\\Automate\\automate.ps1",
+                "-File \"%WORKSPACE_FOLDER%/Automate/automate.ps1\"",
                 "-all",
                 "-s",
-                "-b %WORKSPACE_FOLDER%"
+                "-b \"%WORKSPACE_FOLDER\""
                 // "-author \"<Author here>\""
             ]
         },
@@ -108,8 +108,8 @@
                 // "-halt-on-error",
                 "-file-line-error",
                 "-recorder",
-                "--output-directory=%OUTDIR%",
-                "%DOC%"
+                "--output-directory=\"%OUTDIR%\"",
+                "\"%DOC%\""
             ],
             "env": {}
         },
@@ -227,4 +227,5 @@
         "ν": true
     },
     "latex-workshop.latex.outDir": "%DIR%/out",
+    "latex-workshop.latex.external.build.command": " powershell -File \"%WORKSPACE_FOLDER%/Automate/automate.ps1\" -all -s -b \"%WORKSPACE_FOLDER\" -p \"%DOC%\"",
 }
