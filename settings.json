@@ -78,26 +78,16 @@
     "latex-workshop.latex.tools": [
         {
             "name": "texrefautomate",
-            "command": "powershell ",
-            "args": [               
-                 "\"%WORKSPACE_FOLDER%/Automate/automate.ps1\"",
-                "-all",
-                "-s",
-                "-b \"%WORKSPACE_FOLDER\"",
-                // "-author \"<Author here>\""
-                "-p \"%DOC%\"",
-            ]
-        },
-        {
+            "command": "powershell iex $Env:LaTeXAutomateCommand",
+            "env": {
+                "LaTeXAutomateCommand": "powershell -File \"%WORKSPACE_FOLDER%\\Automate\\automate.ps1\" -s -b \"%WORKSPACE_FOLDER%\" -p \"%DOCFILE%\""
+            }
+        },{
             "name": "texrefautomateAll",
-            "command": "powershell",
-            "args": [
-                "-File \"%WORKSPACE_FOLDER%/Automate/automate.ps1\"",
-                "-all",
-                "-s",
-                "-b \"%WORKSPACE_FOLDER\""
-                // "-author \"<Author here>\""
-            ]
+            "command": "powershell iex $Env:LaTeXAutomateCommand",
+            "env": {
+                "LaTeXAutomateCommand": "powershell -File \"%WORKSPACE_FOLDER%\\Automate\\automate.ps1\" -s -b \"%WORKSPACE_FOLDER%\" -all"
+            }
         },
         {
             "name": "lualatex",
@@ -108,8 +98,8 @@
                 // "-halt-on-error",
                 "-file-line-error",
                 "-recorder",
-                "--output-directory=\"%OUTDIR%\"",
-                "\"%DOC%\""
+                "--output-directory=%OUTDIR%",
+                "%DOC%"
             ],
             "env": {}
         },
@@ -227,5 +217,4 @@
         "ν": true
     },
     "latex-workshop.latex.outDir": "%DIR%/out",
-    "latex-workshop.latex.external.build.command": " powershell -File \"%WORKSPACE_FOLDER%/Automate/automate.ps1\" -all -s -b \"%WORKSPACE_FOLDER\" -p \"%DOC%\"",
 }
