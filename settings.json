@@ -41,7 +41,8 @@
             "name": "Auto-Ref ➞ lualatex",
             "tools": [
                 "texrefautomate",
-                "lualatex"
+                "lualatex",
+                "copy PDF"
             ]
         },
         {
@@ -98,6 +99,16 @@
                 "-b %WORKSPACE_FOLDER%"
                 // "-author \"<Author here>\""
             ]
+        },
+        {
+            "name": "copy PDF",
+            "command": "powershell",
+            "args": [
+                "cp",
+                "-Path %OUTDIR%\\*.pdf",
+                "-Destination C:\\Users\\p4jo\\OneDrive\\Dok\\LaTeX-output"
+            ]
+            
         },
         {
             "name": "lualatex",
@@ -170,7 +181,7 @@
             "name": "biber",
             "command": "biber",
             "args": [
-                "%DOCFILE%"
+                "%OUTDIR%/%DOCFILE%"
             ],
             "env": {}
         },
@@ -224,6 +235,8 @@
     "editor.unicodeHighlight.allowedCharacters": {
         "γ": true,
         "α": true,
+        "ρ": true,
+        "σ": true,
         "ν": true
     },
     "latex-workshop.latex.outDir": "%DIR%/out",
