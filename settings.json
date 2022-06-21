@@ -160,7 +160,7 @@
             "name": "biber",
             "command": "biber",
             "args": [
-                "%DOCFILE%"
+                "%OUTDIR%/%DOCFILE%"
             ],
             "env": {}
         },
