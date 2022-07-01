@@ -74,6 +74,12 @@
                 "texrefautomateAll"
             ]
         },
+        {
+            "name": "Use compiler pool (lualatex)",
+            "tools": [
+                "processPool"
+            ]
+        },
     ],
     "latex-workshop.intellisense.unimathsymbols.enabled": true,
     "latex-workshop.latex.tools": [
@@ -186,31 +192,11 @@
             "env": {}
         },
         {
-            "name": "rnw2tex",
-            "command": "Rscript",
+            "name": "processPool",
+            "command": "python",
             "args": [
-                "-e",
-                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
-            ],
-            "env": {}
-        },
-        {
-            "name": "jnw2tex",
-            "command": "julia",
-            "args": [
-                "-e",
-                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
-            ],
-            "env": {}
-        },
-        {
-            "name": "jnw2texmintex",
-            "command": "julia",
-            "args": [
-                "-e",
-                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
-            ],
-            "env": {}
+                "%WORKSPACE_FOLDER%\\Automate\\processPool.py",
+            ]
         }
     ],
     "latex-workshop.view.pdf.trim": 2,
@@ -220,6 +206,7 @@
         "Using \\\\overbracket and \\\\underbracket from",
         "I'm going to overwrite the following commands",
         "Unable to apply patch",
+        "Empty bibliography"
     ],
     // "latex-workshop.message.error.show": false,
     "latex-workshop.latex.autoBuild.run": "onSave",
