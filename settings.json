@@ -77,7 +77,9 @@
         {
             "name": "Use compiler pool (lualatex)",
             "tools": [
-                "processPool"
+                "texrefautomate",
+                "processPool",
+                "copy PDF"
             ]
         },
     ],
@@ -196,7 +198,14 @@
             "command": "python",
             "args": [
                 "%WORKSPACE_FOLDER%\\Automate\\processPool.py",
-            ]
+                "--file",
+                "%DOC%",
+                "--o",
+                "%OUTDIR%"
+            ],
+            "env": {
+                "PYTHONIOENCODING": "utf_8"
+            }
         }
     ],
     "latex-workshop.view.pdf.trim": 2,

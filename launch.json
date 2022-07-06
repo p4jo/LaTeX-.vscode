@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: new process Pool Server",
+            "type": "python",
+            "request": "launch",
+            "program": "B:\\LaTeX-Privat\\Automate\\processPool.py",
+            "args": ["--stop-server", "--server"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "PowerShell Launch Script",
             "type": "PowerShell",
             "request": "launch",
