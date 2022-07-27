@@ -38,48 +38,52 @@
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.recipes": [
         {
-            "name": "Auto-Ref ➞ lualatex",
+            "name": "processPool (lualatex)",
             "tools": [
-                "texrefautomate",
-                "lualatex",
+                "texrefautomate", 
+                // contains biber and index
+                "processPool",
                 "copy PDF"
             ]
         },
         {
             "name": "lualatex",
             "tools": [
-                "lualatex"
+                "texrefautomate",
+                "lualatex",
+                "copy PDF"
             ]
         },
+        // {
+        //     "name": "lualatex",
+        //     "tools": [
+        //         "lualatex"
+        //     ]
+        // },
         {
-            "name": "lualatex ➞ biber ➞ lualatex × 2",
+            "name": "lualatex ➞ biber ➞ index ➞ lualatex × 2",
             "tools": [
                 "texrefautomate",
                 "lualatex",
                 "biber",
+                "index",
                 "texrefautomate",
                 "lualatex",
                 "lualatex",
+                "copy PDF"
             ]
         },
-        {
-            "name": "biber",
-            "tools": [
-                "biber"
-            ]
-        },
+        // {
+        //     "name": "biber ➞ index",
+        //     "tools": [
+        //         "biber",
+        //         "index"
+        //     ]
+        // },
         {
             "name": "TeX-Ref-Automate",
             "tools": [
                 "texrefautomateAll"
-            ]
-        },
-        {
-            "name": "Use compiler pool (lualatex)",
-            "tools": [
-                "texrefautomate",
-                "processPool",
-                "copy PDF"
             ]
         },
     ],
@@ -128,6 +132,7 @@
                 "-file-line-error",
                 "-recorder",
                 "--output-directory=%OUTDIR%",
+                "--max-print-line",
                 "%DOC%"
             ],
             "env": {}
@@ -194,6 +199,14 @@
             "env": {}
         },
         {
+            "name": "index",
+            "command": "xindex",
+            "args": [
+                "-k", // check language
+                "%OUTDIR%/%DOCFILE%"
+            ]
+        },
+        {
             "name": "processPool",
             "command": "python",
             "args": [
@@ -236,4 +249,6 @@
         "ν": true
     },
     "latex-workshop.latex.outDir": "%DIR%/out",
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.latex.option.maxPrintLine.enabled": true,
 }
