@@ -132,7 +132,7 @@
                 "-file-line-error",
                 "-recorder",
                 "--output-directory=%OUTDIR%",
-                "--max-print-line",
+                // "--max-print-line=300", % Does not work under miktex and lualatex. Use  initexmf --edit-config-file lualatex
                 "%DOC%"
             ],
             "env": {}
