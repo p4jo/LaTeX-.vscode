@@ -8,7 +8,7 @@
             "name": "Python: new process Pool Server",
             "type": "python",
             "request": "launch",
-            "program": "B:\\LaTeX-Privat\\Automate\\processPool.py",
+            "program": ".\\Automate\\processPool.py",
             "args": ["--stop-server", "--server", "--verbose"],
             "console": "integratedTerminal",
             "justMyCode": true
