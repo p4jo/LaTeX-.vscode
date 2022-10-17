@@ -118,7 +118,7 @@
             "args": [
                 "cp",
                 "-Path %OUTDIR%\\*.pdf",
-                "-Destination C:\\Users\\p4jo\\OneDrive\\Dok\\LaTeX-output"
+                "-Destination A:\\OneDrive\\Dok\\LaTeX-output"
             ]
             
         },
@@ -164,14 +164,6 @@
             "env": {}
         },
         {
-            "name": "latexmk_rconly",
-            "command": "latexmk",
-            "args": [
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
             "name": "pdflatex",
             "command": "pdflatex",
             "args": [
@@ -179,14 +171,6 @@
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
             ],
             "env": {}
         },
@@ -228,7 +212,8 @@
         "Using \\\\overbracket and \\\\underbracket from",
         "I'm going to overwrite the following commands",
         "Unable to apply patch",
-        "Empty bibliography"
+        "Empty bibliography",
+        "\\\\float@addtolists detected!"
     ],
     // "latex-workshop.message.error.show": false,
     "latex-workshop.latex.autoBuild.run": "onSave",
@@ -238,7 +223,7 @@
     "latex-workshop.message.warning.show": false,
     "latex-workshop.message.error.show": false,
     "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
-    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.linting.chktex.enabled": true,
     
     "editor.fontFamily": "Myriad Pro",
     "editor.unicodeHighlight.allowedCharacters": {
@@ -246,9 +231,12 @@
         "α": true,
         "ρ": true,
         "σ": true,
-        "ν": true
+        "ν": true,
+        "ℝ": true,
+        "ι": true
     },
     "latex-workshop.latex.outDir": "%DIR%/out",
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
     "latex-workshop.latex.option.maxPrintLine.enabled": true,
+    "latex-workshop.linting.run": "onType",
 }
