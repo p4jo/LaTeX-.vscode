@@ -118,7 +118,6 @@
             "args": [
                 "cp",
                 "-Path %OUTDIR%\\*.pdf",
-                "-Destination C:\\Users\\p4jo\\OneDrive\\Dok\\LaTeX-output"
                 "-Destination A:\\OneDrive\\Dok\\LaTeX-output"
             ]
             
