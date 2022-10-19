@@ -228,7 +228,9 @@
         "Using \\\\overbracket and \\\\underbracket from",
         "I'm going to overwrite the following commands",
         "Unable to apply patch",
-        "Empty bibliography"
+        "Empty bibliography",
+        "\\\\float@addtolists detected!",
+        "Font shape .* undefined"
     ],
     // "latex-workshop.message.error.show": false,
     "latex-workshop.latex.autoBuild.run": "onSave",
@@ -238,7 +240,7 @@
     "latex-workshop.message.warning.show": false,
     "latex-workshop.message.error.show": false,
     "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
-    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.linting.chktex.enabled": true,
     
     "editor.fontFamily": "Myriad Pro",
     "editor.unicodeHighlight.allowedCharacters": {
