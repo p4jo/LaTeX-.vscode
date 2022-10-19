@@ -119,6 +119,7 @@
                 "cp",
                 "-Path %OUTDIR%\\*.pdf",
                 "-Destination C:\\Users\\p4jo\\OneDrive\\Dok\\LaTeX-output"
+                "-Destination A:\\OneDrive\\Dok\\LaTeX-output"
             ]
             
         },
@@ -164,14 +165,6 @@
             "env": {}
         },
         {
-            "name": "latexmk_rconly",
-            "command": "latexmk",
-            "args": [
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
             "name": "pdflatex",
             "command": "pdflatex",
             "args": [
@@ -179,14 +172,6 @@
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
             ],
             "env": {}
         },
@@ -248,9 +233,12 @@
         "α": true,
         "ρ": true,
         "σ": true,
-        "ν": true
+        "ν": true,
+        "ℝ": true,
+        "ι": true
     },
     "latex-workshop.latex.outDir": "%DIR%/out",
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
     "latex-workshop.latex.option.maxPrintLine.enabled": true,
+    "latex-workshop.linting.run": "onType",
 }
