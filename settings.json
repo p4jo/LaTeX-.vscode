@@ -43,7 +43,7 @@
                 "texrefautomate", 
                 // contains biber and index
                 "processPool",
-                "copy PDF"
+                // "copy PDF"
             ]
         },
         {
@@ -51,7 +51,7 @@
             "tools": [
                 "texrefautomate",
                 "lualatex",
-                "copy PDF"
+                // "copy PDF"
             ]
         },
         // {
@@ -70,7 +70,7 @@
                 "texrefautomate",
                 "lualatex",
                 "lualatex",
-                "copy PDF"
+                // "copy PDF"
             ]
         },
         // {
@@ -91,9 +91,9 @@
     "latex-workshop.latex.tools": [
         {
             "name": "texrefautomate",
-            "command": "powershell",
+            "command": "pwsh",
             "args": [
-                "%WORKSPACE_FOLDER%\\Automate\\automate.ps1",
+                "%WORKSPACE_FOLDER%/Automate/automate.ps1",
                 "-all",
                 "-p %DOC%",
                 "-s",
@@ -103,22 +103,23 @@
         },
         {
             "name": "texrefautomateAll",
-            "command": "powershell",
+            "command": "pwsh",
             "args": [
-                "%WORKSPACE_FOLDER%\\Automate\\automate.ps1",
+                "%WORKSPACE_FOLDER%/Automate/automate.ps1",
                 "-all",
                 "-s",
-                "-b %WORKSPACE_FOLDER%"
+                // "-b %WORKSPACE_FOLDER%"
+                "-b /home/johannesh/repos/LaTeX-privat"
                 // "-author \"<Author here>\""
             ]
         },
         {
             "name": "copy PDF",
-            "command": "powershell",
+            "command": "pwsh",
             "args": [
                 "cp",
-                "-Path %OUTDIR%\\*.pdf",
-                "-Destination A:\\OneDrive\\Dok\\LaTeX-output"
+                "-Path %OUTDIR%/*.pdf",
+                "-Destination A:/OneDrive/Dok/LaTeX-output"
             ]
             
         },
@@ -194,7 +195,7 @@
             "name": "processPool",
             "command": "python",
             "args": [
-                "%WORKSPACE_FOLDER%\\Automate\\processPool.py",
+                "%WORKSPACE_FOLDER%/Automate/processPool.py",
                 "--file",
                 "%DOC%",
                 "--o",
@@ -226,7 +227,7 @@
     "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
     "latex-workshop.linting.chktex.enabled": true,
     
-    "editor.fontFamily": "Myriad Pro",
+    "editor.fontFamily": "",
     "editor.unicodeHighlight.allowedCharacters": {
         "γ": true,
         "α": true,

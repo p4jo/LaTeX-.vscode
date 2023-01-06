@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "PowerShell Launch Script",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${workspaceFolder}/Automate/keydCopy.ps1",
+            "cwd": "${workspaceFolder}/Automate"
+        },
+        {
             "name": "Python: new process Pool Server",
             "type": "python",
             "request": "launch",
-            "program": ".\\Automate\\processPool.py",
+            "program": "./Automate/processPool.py",
             "args": ["--stop-server", "--server", "--verbose"],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -17,7 +24,7 @@
             "name": "PowerShell Launch Script",
             "type": "PowerShell",
             "request": "launch",
-            "script": ".\\Automate\\automate.ps1",
+            "script": "./Automate/automate.ps1",
             "cwd": "${workspaceFolder}"
         },
     ]
