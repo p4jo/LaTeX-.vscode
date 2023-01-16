@@ -43,7 +43,7 @@
                 "texrefautomate", 
                 // contains biber and index
                 "processPool",
-                // "copy PDF"
+                "copy PDF"
             ]
         },
         {
@@ -51,7 +51,7 @@
             "tools": [
                 "texrefautomate",
                 "lualatex",
-                // "copy PDF"
+                "copy PDF"
             ]
         },
         // {
