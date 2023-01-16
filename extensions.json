@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "james-yu.latex-workshop",
-        "atishay-jain.all-autocomplete"
+        "atishay-jain.all-autocomplete",
+        "ms-vscode.powershell"
     ]
 }
