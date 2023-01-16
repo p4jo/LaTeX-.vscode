@@ -38,35 +38,48 @@
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.recipes": [
         {
-            "name": "Auto-Ref ➞ lualatex",
+            "name": "processPool (lualatex)",
             "tools": [
-                "texrefautomate",
-                "lualatex"
+                "texrefautomate", 
+                // contains biber and index
+                "processPool",
+                // "copy PDF"
             ]
         },
         {
             "name": "lualatex",
             "tools": [
-                "lualatex"
+                "texrefautomate",
+                "lualatex",
+                // "copy PDF"
             ]
         },
+        // {
+        //     "name": "lualatex",
+        //     "tools": [
+        //         "lualatex"
+        //     ]
+        // },
         {
-            "name": "lualatex ➞ biber ➞ lualatex × 2",
+            "name": "lualatex ➞ biber ➞ index ➞ lualatex × 2",
             "tools": [
                 "texrefautomate",
                 "lualatex",
                 "biber",
+                "index",
                 "texrefautomate",
                 "lualatex",
                 "lualatex",
+                "copy PDF"
             ]
         },
-        {
-            "name": "biber",
-            "tools": [
-                "biber"
-            ]
-        },
+        // {
+        //     "name": "biber ➞ index",
+        //     "tools": [
+        //         "biber",
+        //         "index"
+        //     ]
+        // },
         {
             "name": "TeX-Ref-Automate",
             "tools": [
@@ -78,16 +91,34 @@
     "latex-workshop.latex.tools": [
         {
             "name": "texrefautomate",
-            "command": "powershell iex $Env:LaTeXAutomateCommand",
-            "env": {
-                "LaTeXAutomateCommand": "powershell -File \"%WORKSPACE_FOLDER%\\Automate\\automate.ps1\" -s -b \"%WORKSPACE_FOLDER%\" -p \"%DOCFILE%\""
-            }
-        },{
+            "command": "pwsh",
+            "args": [
+                "-c",
+                "%WORKSPACE_FOLDER%/Automate/automate.ps1 -all -s -b '%WORKSPACE_FOLDER%' -p '%DOC%'" 
+                // "%WORKSPACE_FOLDER%/Automate/automate.ps1",
+                // "-all",
+                // "-p %DOC%",
+                // "-s",
+                // "-b %WORKSPACE_FOLDER%"
+                // "-author \"<Author here>\""
+            ]
+        },
+        {
             "name": "texrefautomateAll",
-            "command": "powershell iex $Env:LaTeXAutomateCommand",
-            "env": {
-                "LaTeXAutomateCommand": "powershell -File \"%WORKSPACE_FOLDER%\\Automate\\automate.ps1\" -s -b \"%WORKSPACE_FOLDER%\" -all"
-            }
+            "command": "pwsh",
+            "args": [
+                "-c",
+                "%WORKSPACE_FOLDER%/Automate/automate.ps1 -all -s -b %WORKSPACE_FOLDER%" // "-author \"<Author here>\""
+            ]
+        },
+        {
+            "name": "copy PDF",
+            "command": "pwsh",
+            "args": [
+                "-c",
+                "%WORKSPACE_FOLDER%/Automate/copyToOneDrive.ps1 -f '%OUTDIR%'"
+            ]
+            
         },
         {
             "name": "lualatex",
@@ -99,6 +130,7 @@
                 "-file-line-error",
                 "-recorder",
                 "--output-directory=%OUTDIR%",
+                // "--max-print-line=300", % Does not work under miktex and lualatex. Use  initexmf --edit-config-file lualatex
                 "%DOC%"
             ],
             "env": {}
@@ -130,14 +162,6 @@
             "env": {}
         },
         {
-            "name": "latexmk_rconly",
-            "command": "latexmk",
-            "args": [
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
             "name": "pdflatex",
             "command": "pdflatex",
             "args": [
@@ -145,14 +169,6 @@
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
             ],
             "env": {}
         },
@@ -165,31 +181,26 @@
             "env": {}
         },
         {
-            "name": "rnw2tex",
-            "command": "Rscript",
+            "name": "index",
+            "command": "xindex",
             "args": [
-                "-e",
-                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
-            ],
-            "env": {}
+                "-k", // check language
+                "%OUTDIR%/%DOCFILE%"
+            ]
         },
         {
-            "name": "jnw2tex",
-            "command": "julia",
+            "name": "processPool",
+            "command": "python",
             "args": [
-                "-e",
-                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+                "%WORKSPACE_FOLDER%/Automate/processPool.py",
+                "--file",
+                "%DOC%",
+                "--o",
+                "%OUTDIR%"
             ],
-            "env": {}
-        },
-        {
-            "name": "jnw2texmintex",
-            "command": "julia",
-            "args": [
-                "-e",
-                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
-            ],
-            "env": {}
+            "env": {
+                "PYTHONIOENCODING": "utf_8"
+            }
         }
     ],
     "latex-workshop.view.pdf.trim": 2,
@@ -199,6 +210,9 @@
         "Using \\\\overbracket and \\\\underbracket from",
         "I'm going to overwrite the following commands",
         "Unable to apply patch",
+        "Empty bibliography",
+        "\\\\float@addtolists detected!",
+        "Font shape .* undefined"
     ],
     // "latex-workshop.message.error.show": false,
     "latex-workshop.latex.autoBuild.run": "onSave",
@@ -208,13 +222,20 @@
     "latex-workshop.message.warning.show": false,
     "latex-workshop.message.error.show": false,
     "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
-    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.linting.chktex.enabled": true,
     
-    "editor.fontFamily": "Myriad Pro",
+    "editor.fontFamily": "",
     "editor.unicodeHighlight.allowedCharacters": {
         "γ": true,
         "α": true,
-        "ν": true
+        "ρ": true,
+        "σ": true,
+        "ν": true,
+        "ℝ": true,
+        "ι": true
     },
     "latex-workshop.latex.outDir": "%DIR%/out",
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.latex.option.maxPrintLine.enabled": true,
+    "latex-workshop.linting.run": "onType",
 }
