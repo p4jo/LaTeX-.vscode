@@ -117,7 +117,7 @@
             "command": "powershell",
             "args": [
                 "cp",
-                "-Path %OUTDIR%\\*.pdf",
+                "-Path \"%OUTDIR%\\*.pdf\"",
                 "-Destination A:\\OneDrive\\Dok\\LaTeX-output"
             ]
             
