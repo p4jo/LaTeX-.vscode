@@ -54,12 +54,13 @@
                 "copy PDF"
             ]
         },
-        // {
-        //     "name": "lualatex",
-        //     "tools": [
-        //         "lualatex"
-        //     ]
-        // },
+        {
+            "name": 
+                "copy PDF",
+            "tools": [
+                "copy PDF"
+            ]
+        },
         {
             "name": "lualatex ➞ biber ➞ index ➞ lualatex × 2",
             "tools": [
