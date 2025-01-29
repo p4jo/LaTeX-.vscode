@@ -219,7 +219,7 @@
     "latex-workshop.latex.autoBuild.run": "onSave",
     "git.confirmSync": false,
     "git.postCommitCommand": "sync",
-    "git.autoStash": true,
+    "git.autoStash": false,
     "latex-workshop.message.warning.show": false,
     "latex-workshop.message.error.show": false,
     "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
