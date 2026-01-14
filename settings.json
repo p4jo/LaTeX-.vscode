@@ -239,5 +239,5 @@
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
     "latex-workshop.latex.option.maxPrintLine.enabled": true,
     "latex-workshop.linting.run": "onType",
-    "editor.wordWrap": "on",
+    "editor.wordWrap": "bounded",
 }
