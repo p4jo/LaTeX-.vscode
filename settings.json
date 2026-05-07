@@ -240,4 +240,5 @@
     "latex-workshop.latex.option.maxPrintLine.enabled": true,
     "latex-workshop.linting.run": "onType",
     "editor.wordWrap": "bounded",
+    "editor.lineNumbers": "off",
 }
