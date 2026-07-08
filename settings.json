@@ -87,6 +87,12 @@
                 "texrefautomateAll"
             ]
         },
+        {
+            "name": "Stop processPool",
+            "tools": [
+                "processPoolStop"
+            ]
+        }
     ],
     "latex-workshop.intellisense.unimathsymbols.enabled": true,
     "latex-workshop.latex.tools": [
@@ -198,6 +204,18 @@
                 "%DOC%",
                 "--o",
                 "%OUTDIR%"
+            ],
+            "env": {
+                "PYTHONIOENCODING": "utf_8"
+            }
+        },
+        {
+            "name": "processPoolStop",
+            "command": "python",
+            "args": [
+                "%WORKSPACE_FOLDER%/Automate/processPool.py",
+                "--stop-server",
+                "--no-server",
             ],
             "env": {
                 "PYTHONIOENCODING": "utf_8"
