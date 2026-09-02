@@ -9,26 +9,25 @@
     ],
     // "latex-workshop.latex.autoBuild.interval": 45000, //wird wohl nicht nach Ende gezählt
     "files.exclude": {
+        "*.log": true,
+        "**/*.7z": true,
         "**/*.aux": true,
         "**/*.bbl": true,
         "**/*.bcf": true,
         "**/*.blg": true,
         "**/*.fdb_latexmk": true,
         "**/*.fls": true,
+        "**/*.idx": true,
+        "**/*.ilg": true,
+        "**/*.ind": true,
         "**/*.nav": true,
-        "**/*.snm": true,
         "**/*.out": true,
         "**/*.run.xml": true,
+        "**/*.snm": true,
         "**/*.synctex.gz": true,
         "**/*.synctex(busy)": true,
-        // "**/*.tex.bak": true,
         "**/*.toc": true,
-        // "**/*_generated.tex": false,
-        "*.log": true,
-        // "**/*.log": true,
-        "**/*.7z": true,
-        "**/*.zip": true,
-        // "**/*.pdf": true
+        "**/*.zip": true
     },
     "[latex]": {
         "files.encoding": "utf8",
@@ -259,4 +258,5 @@
     "latex-workshop.linting.run": "onType",
     "editor.wordWrap": "bounded",
     "editor.lineNumbers": "off",
+    "editor.wordWrapColumn": 90,
 }
